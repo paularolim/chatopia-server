@@ -7,15 +7,23 @@
     "start": "node dist/main/server.js",
     "dev": "tsx --watch src/main/server.ts",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "yarn lint --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "20.2.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "^2.25.2",
     "git-commit-msg-linter": "5.0.4",
     "husky": "8.0.3",
+    "prettier": "^2.8.8",
     "tsx": "3.12.7",
     "typescript": "5.0.4"
   }
