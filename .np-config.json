@@ -1,0 +1,6 @@
+{
+  "tests": false,
+  "publish": false,
+  "releaseDraft": true,
+  "message": "chore: release %s"
+}
