@@ -1,4 +1,5 @@
-import { badRequest } from '../../helpers/http/http-helper';
+import { ServerError } from '../../errors';
+import { badRequest, serverError } from '../../helpers/http/http-helper';
 import { Controller, HttpRequest, HttpResponse } from '../../protocols';
 
 // eslint-disable-next-line no-useless-escape
@@ -26,9 +27,6 @@ export class RegisterController implements Controller {
       return badRequest(new Error('password must be at least 6 characters long'));
     }
 
-    return {
-      statusCode: 500,
-      body: { message: 'something went wrong' },
-    };
+    return serverError(new ServerError());
   }
 }
