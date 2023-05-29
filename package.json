@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paularolim/chatopia-server.git"
+  },
   "scripts": {
     "start": "node dist/main/server.js",
     "dev": "tsx --watch src/main/server.ts",
