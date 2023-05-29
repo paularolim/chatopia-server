@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "\nrunning code linter" &&
+yarn lint &&
+
+echo "\nsearching for typescript errors" &&
+npx tsc --noEmit &&
+echo "no typescript errors found\n"
