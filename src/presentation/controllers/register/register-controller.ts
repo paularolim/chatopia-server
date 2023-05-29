@@ -1,3 +1,4 @@
+import { badRequest } from '../../helpers/http/http-helper';
 import { Controller, HttpRequest, HttpResponse } from '../../protocols';
 
 // eslint-disable-next-line no-useless-escape
@@ -7,7 +8,7 @@ export class RegisterController implements Controller {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     for (const field of ['name', 'email', 'password']) {
       if (!httpRequest?.body?.[field]) {
-        return { statusCode: 400, body: { message: `Missing param: ${field}` } };
+        return badRequest(new Error(`Missing param: ${field}`));
       }
     }
 
@@ -16,22 +17,13 @@ export class RegisterController implements Controller {
     const email = httpRequest?.body?.email?.toLowerCase();
 
     if (name.length < 5) {
-      return {
-        statusCode: 400,
-        body: { message: 'name must be at least 5 characters long' },
-      };
+      return badRequest(new Error('name must be at least 5 characters long'));
     }
     if (!email.match(emailRegex)) {
-      return {
-        statusCode: 400,
-        body: { message: 'invalid e-mail' },
-      };
+      return badRequest(new Error('invalid e-mail'));
     }
     if (password.length < 6) {
-      return {
-        statusCode: 400,
-        body: { message: 'password must be at least 6 characters long' },
-      };
+      return badRequest(new Error('password must be at least 6 characters long'));
     }
 
     return {
