@@ -9,8 +9,7 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "lint:fix": "yarn lint --fix",
-    "release": "release-it --ci"
+    "lint:fix": "yarn lint --fix"
   },
   "keywords": [],
   "author": "",
@@ -27,7 +26,6 @@
     "git-commit-msg-linter": "5.0.4",
     "husky": "8.0.3",
     "prettier": "^2.8.8",
-    "release-it": "^15.10.3",
     "tsx": "3.12.7",
     "typescript": "5.0.4"
   },
