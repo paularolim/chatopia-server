@@ -1,5 +1,5 @@
 import { AddAccountRepository } from '../../../data/protocols/database/account/add-account-repository';
-import { ServerError } from '../../errors';
+import { EmailInUseError, ServerError } from '../../errors';
 import { badRequest, ok, serverError } from '../../helpers/http/http-helper';
 import { Controller, HttpRequest, HttpResponse, Validation } from '../../protocols';
 
@@ -24,7 +24,12 @@ export class RegisterController implements Controller {
 
       return ok(account);
     } catch (error) {
-      return serverError(new ServerError());
+      switch ((error as any)?.code) {
+        case 'auth/email-already-exists':
+          return badRequest(new EmailInUseError());
+        default:
+          return serverError(new ServerError());
+      }
     }
   }
 }
