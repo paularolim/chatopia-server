@@ -1,5 +1,5 @@
 import { SignInAccountRepository } from '../../../data/protocols/database/account/sign-in-account-repository';
-import { ServerError } from '../../errors';
+import { ServerError, InvalidCredentialsError } from '../../errors';
 import { badRequest, ok, serverError } from '../../helpers/http/http-helper';
 import { Controller, HttpRequest, HttpResponse, Validation } from '../../protocols';
 
@@ -23,7 +23,14 @@ export class LoginController implements Controller {
 
       return ok(account);
     } catch (error) {
-      return serverError(new ServerError());
+      switch ((error as any)?.code) {
+        case 'auth/wrong-password':
+          return badRequest(new InvalidCredentialsError());
+        case 'auth/user-not-found':
+          return badRequest(new InvalidCredentialsError());
+        default:
+          return serverError(new ServerError());
+      }
     }
   }
 }
