@@ -1,7 +1,7 @@
 import { Router } from 'express';
+import { adaptRoute } from '../adapters/express/express-route-adapter';
+import { makeLoginController } from '../factories/login/login';
 
 export default (router: Router): void => {
-  router.post('/login', (_, response) => {
-    response.json({ message: 'endpoint not implemented' });
-  });
+  router.post('/login', adaptRoute(makeLoginController()));
 };
