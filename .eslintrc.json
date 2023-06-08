@@ -20,6 +20,18 @@
   "rules": {
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "operator-linebreak": "off",
+    "no-restricted-syntax": "off",
+    "class-methods-use-this": "off",
+    "no-useless-constructor": "off",
+    "no-unused-vars": "off",
+    "no-empty-function": "off",
+    "object-curly-newline": [
+      "error",
+      {
+        "multiline": true
+      }
+    ]
   }
 }
